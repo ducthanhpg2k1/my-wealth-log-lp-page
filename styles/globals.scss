@@ -15,4 +15,31 @@ body {
   font-size: 14px;
   line-height: normal;
   text-rendering: optimizeSpeed;
+  color: #4f4f4f;
+  font-family: var(--fontInter);
+}
+
+.font-setting {
+  font-feature-settings: 'ss01' on, 'cv01' on, 'cv11' on;
+}
+
+.my-masonry-grid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 16px; /* gutter size */
+  background-clip: padding-box;
+  width: max-content !important;
+}
+
+/* Style your items */
+.my-masonry-grid_column > div {
+  margin-bottom: 16px;
+}
+
+.bg-card-footer {
+  background: linear-gradient(to right, #73db66, #70ceb5);
 }

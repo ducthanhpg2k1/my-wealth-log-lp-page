@@ -6,7 +6,7 @@ import { ReactElement, ReactNode } from 'react';
 
 import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
-import { Roboto } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import Head from 'next/head';
 import { appWithTranslation } from 'next-i18next';
 
@@ -22,12 +22,11 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
-const RobotoFont = Roboto({
+const InterFont = Inter({
   subsets: ['latin'],
-  weight: '400',
-  variable: '--font-waterfall',
+  weight: ['300', '400', '500', '700', '900'],
+  display: 'swap',
 });
-
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page: any) => page);
 
@@ -49,7 +48,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
       <style jsx global>{`
         :root {
-          --fontRoboto: ${RobotoFont.style.fontFamily};
+          --fontInter: ${InterFont.style.fontFamily};
         }
       `}</style>
 

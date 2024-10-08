@@ -5,20 +5,15 @@ import classNames from 'classnames';
 interface TextProps {
   children: React.ReactNode;
   type?:
-    | 'h1-bold'
-    | 'h1-regular'
-    | 'h2-bold'
-    | 'h2-regular'
-    | 'h3-bold'
-    | 'h3-regular'
-    | 'body-bold'
-    | 'body-regular'
-    | 'body-2-bold'
-    | 'body-2-regular'
-    | 'body-3-bold'
-    | 'body-3-regular'
-    | 'body-4-bold'
-    | 'body-4-regular'
+    | 'font-18-500'
+    | 'font-20-500'
+    | 'font-20-700'
+    | 'font-14-400'
+    | 'font-40-700'
+    | 'font-16-400'
+    | 'font-50-600'
+    | 'font-40-600'
+    | 'font-16-500'
     | undefined;
   color?:
     | 'cwhite'
