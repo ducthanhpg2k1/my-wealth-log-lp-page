@@ -4,15 +4,18 @@ import React from 'react';
 import { Avatar } from '@nextui-org/react';
 import clsx from 'clsx';
 import Image from 'next/image';
+import { isMobile } from 'react-device-detect';
 import Masonry from 'react-masonry-css';
 
 import Text from '@components/UI/Text';
 import { getAvatar } from '@utils/common';
 
+import ReviewCardMobile from './ReviewCardMobile';
 import { AnimatedItem } from '..';
 
-const reviews = [
+export const reviews = [
   {
+    id: 1,
     name: 'Nguyen Nguyen',
     avatar: 'https://via.placeholder.com/150',
     rating: 5,
@@ -20,6 +23,8 @@ const reviews = [
       'Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.. Lorem ipsum dolor sit amet consectetur',
   },
   {
+    id: 2,
+
     name: 'Nguyen A',
     avatar: 'https://via.placeholder.com/150',
     rating: 4,
@@ -27,6 +32,8 @@ const reviews = [
       'Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.  Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.',
   },
   {
+    id: 3,
+
     name: 'Nguyen B',
     avatar: 'https://via.placeholder.com/150',
     rating: 3,
@@ -34,6 +41,8 @@ const reviews = [
       'Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.',
   },
   {
+    id: 4,
+
     name: 'Nguyen C',
     avatar: 'https://via.placeholder.com/150',
     rating: 5,
@@ -41,6 +50,8 @@ const reviews = [
       'Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.',
   },
   {
+    id: 5,
+
     name: 'Nguyen D',
     avatar: 'https://via.placeholder.com/150',
     rating: 4,
@@ -48,6 +59,8 @@ const reviews = [
       'Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.',
   },
   {
+    id: 6,
+
     name: 'Nguyen E',
     avatar: 'https://via.placeholder.com/150',
     rating: 5,
@@ -58,8 +71,8 @@ const reviews = [
 
 const Evaluate = () => {
   return (
-    <div className='container mx-auto flex flex-col gap-[160px] pb-[80px]'>
-      <div className='flex flex-col gap-6 text-center items-center'>
+    <div className='container mx-auto px-5 flex flex-col gap-[40px] md:gap-[160px] pb-[40px] md:pb-[80px]'>
+      <div className='flex flex-col gap-3 md:gap-6 text-center items-center'>
         <AnimatedItem
           transition={{
             duration: 0.3,
@@ -84,7 +97,18 @@ const Evaluate = () => {
           </Text>
         </AnimatedItem>
       </div>
-      <ReviewCard />
+      {!isMobile && <ReviewCard />}
+      {isMobile && (
+        <AnimatedItem
+          transition={{
+            duration: 0.6,
+            ease: 'linear',
+            delay: 0.4,
+          }}
+        >
+          <ReviewCardMobile />
+        </AnimatedItem>
+      )}
     </div>
   );
 };

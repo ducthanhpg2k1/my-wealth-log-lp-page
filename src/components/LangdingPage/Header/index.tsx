@@ -1,6 +1,7 @@
 import { Select, SelectItem } from '@nextui-org/react';
 import clsx from 'clsx';
 import Image from 'next/image';
+import { isMobile } from 'react-device-detect';
 
 const Header = ({ scrollY }: { scrollY: number }) => {
   return (
@@ -9,8 +10,17 @@ const Header = ({ scrollY }: { scrollY: number }) => {
         'bg-[rgba(0_0_0_0.08)] backdrop-blur transition-all z-50': scrollY > 0,
       })}
     >
-      <div className='container mx-auto flex py-[36px] justify-between items-center'>
-        <Image src={'/logo.png'} width={238} height={37} alt='' className='w-[238px] h-[37px]' />
+      <div className='container mx-auto flex py-3 px-5 md:py-[36px] justify-between items-center'>
+        <Image
+          src={isMobile ? '/logo-mobile.png' : '/logo.png'}
+          width={238}
+          height={37}
+          alt=''
+          className='md:w-[238px] md:h-[37px] w-[186px] h-[28px]'
+        />
+        <div className='block md:hidden'>
+          <IconMenu />
+        </div>
         <Select
           classNames={{
             popoverContent: ['!text-[#4F4F4F] bg-none'],
@@ -19,7 +29,7 @@ const Header = ({ scrollY }: { scrollY: number }) => {
             trigger: ['border-none bg-transparent shadow-none data-[hover=true]:bg-transparent'],
           }}
           defaultSelectedKeys={['vn']}
-          className='w-[140px]'
+          className='w-[140px] md:block hidden'
           startContent={
             <Image className='w-6 h-6' src={'/icons/ic-vn.svg'} width={24} height={24} alt='' />
           }
@@ -33,3 +43,13 @@ const Header = ({ scrollY }: { scrollY: number }) => {
   );
 };
 export default Header;
+
+const IconMenu = () => {
+  return (
+    <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'>
+      <rect x='3' y='11' width='18' height='2' rx='1' fill='#0E5543' />
+      <rect x='3' y='5' width='18' height='2' rx='1' fill='#0E5543' />
+      <rect x='3' y='17' width='18' height='2' rx='1' fill='#0E5543' />
+    </svg>
+  );
+};

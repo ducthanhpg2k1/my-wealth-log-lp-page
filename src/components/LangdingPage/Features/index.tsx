@@ -53,7 +53,7 @@ const DATA_FEATURES = [
 
 const Features = () => {
   return (
-    <div className='container mx-auto flex flex-col gap-[80px] pb-[80px]'>
+    <div className='container mx-auto px-5 flex flex-col gap-[40px] md:gap-[80px] pb-[80px]'>
       <AnimatedItem
         transition={{
           duration: 0.4,
@@ -72,7 +72,7 @@ const Features = () => {
           delay: 0.4,
         }}
       >
-        <div className='grid grid-cols-3 gap-x-[168px] gap-y-[100px]'>
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-x-[168px] gap-y-[56px] md:gap-y-[100px]'>
           {DATA_FEATURES?.map((item) => {
             return (
               <div

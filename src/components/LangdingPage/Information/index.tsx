@@ -25,7 +25,7 @@ const DATA_INFORMATION = [
 
 const Information = () => {
   return (
-    <div className='container mx-auto grid gap-[168px] grid-cols-3 py-[80px]'>
+    <div className='container mx-auto grid gap-[56px] px-5 md:gap-[168px] grid-cols-1 md:grid-cols-3 py-[65px] md:py-[80px]'>
       {DATA_INFORMATION?.map((item) => {
         return (
           <div

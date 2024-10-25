@@ -15,12 +15,26 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+
+  @media only screen and (max-width: 768px) {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
 }
 .font-40-700 {
   font-size: 40px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+
+  @media only screen and (max-width: 768px) {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
 }
 
 .font-20-500 {
@@ -42,6 +56,13 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+
+  @media only screen and (max-width: 768px) {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
 }
 
 .font-40-600 {
@@ -49,6 +70,13 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+
+  @media only screen and (max-width: 768px) {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
 }
 .font-16-500 {
   font-size: 16px;

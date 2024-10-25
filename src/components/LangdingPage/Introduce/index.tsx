@@ -1,5 +1,6 @@
 /* eslint-disable import/no-cycle */
 import Image from 'next/image';
+import { isMobile } from 'react-device-detect';
 
 import Text from '@components/UI/Text';
 
@@ -31,7 +32,7 @@ const DATA_INTRODUCE = [
 
 const Introduce = () => {
   return (
-    <div className='container mx-auto flex flex-col gap-[60px] pb-[80px]'>
+    <div className='container mx-auto flex flex-col px-5  gap-[60px] pb-[80px]'>
       {DATA_INTRODUCE?.map((item, index) => {
         return (
           <AnimatedItem
@@ -42,8 +43,21 @@ const Introduce = () => {
               delay: 0.3,
             }}
           >
-            <div key={item?.id} className='grid items-center grid-cols-2 gap-[186px]'>
-              {index !== 1 && (
+            <div
+              key={item?.id}
+              className='grid items-center grid-cols-1 md:grid-cols-2 gap-[48px] md:gap-[186px]'
+            >
+              {index !== 1 && !isMobile && (
+                <Image
+                  src={item?.urlImage}
+                  alt=''
+                  className='w-auto h-auto'
+                  width={494}
+                  height={396}
+                />
+              )}
+
+              {isMobile && (
                 <Image
                   src={item?.urlImage}
                   alt=''
@@ -60,7 +74,7 @@ const Introduce = () => {
                 <Text type='font-16-400'>{item?.description}</Text>
               </div>
 
-              {index === 1 && (
+              {index === 1 && !isMobile && (
                 <Image
                   src={item?.urlImage}
                   alt=''

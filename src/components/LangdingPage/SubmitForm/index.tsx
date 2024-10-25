@@ -4,7 +4,7 @@ import Text from '@components/UI/Text';
 
 const SubmitForm = () => {
   return (
-    <div className='container grid grid-cols-3 gap-[100px] mx-auto pb-[80px]'>
+    <div className='container grid grid-cols-1 px-5 md:grid-cols-3 gap-[56px] md:gap-[100px] mx-auto pb-[40px] md:pb-[80px]'>
       <div className='flex flex-col gap-4'>
         <Text type='font-16-400'>
           Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus.
@@ -27,7 +27,7 @@ const SubmitForm = () => {
         <Text type='font-16-400'>Về chúng tôi</Text>
         <Text type='font-16-400'>Tuyển dụng</Text>
       </div>
-      <div className='flex flex-col gap-4'>
+      <div className='flex flex-col gap-4 mt-[-25px] md:mt-0'>
         <Text type='font-16-500' className='uppercase'>
           Theo dõi
         </Text>
