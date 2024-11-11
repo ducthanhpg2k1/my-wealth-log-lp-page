@@ -53,7 +53,10 @@ const DATA_FEATURES = [
 
 const Features = () => {
   return (
-    <div className='container mx-auto px-5 flex flex-col gap-[40px] md:gap-[80px] pb-[80px]'>
+    <div
+      id='#feature'
+      className='container mx-auto px-5 flex flex-col gap-[40px] md:gap-[80px] pb-[80px]'
+    >
       <AnimatedItem
         transition={{
           duration: 0.4,

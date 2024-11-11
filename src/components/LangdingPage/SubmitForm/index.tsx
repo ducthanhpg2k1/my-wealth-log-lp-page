@@ -4,7 +4,10 @@ import Text from '@components/UI/Text';
 
 const SubmitForm = () => {
   return (
-    <div className='container grid grid-cols-1 px-5 md:grid-cols-3 gap-[56px] md:gap-[100px] mx-auto pb-[40px] md:pb-[80px]'>
+    <div
+      id='#support'
+      className='container grid grid-cols-1 px-5 md:grid-cols-3 gap-[56px] md:gap-[100px] mx-auto pb-[40px] md:pb-[80px]'
+    >
       <div className='flex flex-col gap-4'>
         <Text type='font-16-400'>
           Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus.

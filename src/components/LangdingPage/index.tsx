@@ -55,6 +55,7 @@ const LangdingPage = () => {
     <div ref={divRef} className='w-screen h-screen overflow-x-hidden flex flex-col overflow-auto'>
       <Header scrollY={scrollY} />
       <div
+        id='#home'
         className={clsx(
           'w-full mt-[-48px] md:mt-0 bg-[url("/bg-header-mobile.png")] md:bg-[url("/bg-header.png")] min-h-[640px] md:min-h-[738px] bg-center bg-no-repeat bg-[length:100%_100%]',
         )}

@@ -1,9 +1,48 @@
+/* eslint-disable import/no-cycle */
+/* eslint-disable unicorn/consistent-function-scoping */
+/* eslint-disable unicorn/prefer-query-selector */
+import { useState } from 'react';
+
 import { Select, SelectItem } from '@nextui-org/react';
 import clsx from 'clsx';
 import Image from 'next/image';
 import { isMobile } from 'react-device-detect';
 
+import Text from '@components/UI/Text';
+
+import MobileMenu from './MobileMenu';
+
+export const DATAMENUS = [
+  {
+    id: 1,
+    href: '#home',
+    label: 'Trang chủ',
+  },
+  {
+    id: 2,
+    href: '#feature',
+    label: 'Tính năng',
+  },
+  {
+    id: 3,
+    href: '#support',
+    label: 'Hỗ trợ',
+  },
+];
+
 const Header = ({ scrollY }: { scrollY: number }) => {
+  const [activeMenu, setActiveMenu] = useState('#home');
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleRedirectMenu = (id: string) => {
+    setActiveMenu(id);
+
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <div
       className={clsx('fixed top-0 w-full z-[1000]', {
@@ -18,7 +57,23 @@ const Header = ({ scrollY }: { scrollY: number }) => {
           alt=''
           className='md:w-[238px] md:h-[37px] w-[186px] h-[28px]'
         />
-        <div className='block md:hidden'>
+        <div className='hidden md:flex items-center gap-12 cursor-pointer transition-all'>
+          {DATAMENUS?.map((item) => {
+            return (
+              <Text
+                onClick={() => handleRedirectMenu(item.href)}
+                type='font-16-500'
+                className={clsx('text-[#4F4F4F] hover:text-[#2AA98B]', {
+                  '!text-[#2AA98B]': item?.href === activeMenu,
+                })}
+                key={item?.id}
+              >
+                {item?.label}
+              </Text>
+            );
+          })}
+        </div>
+        <div className='block md:hidden' onClick={() => setIsOpen(!isOpen)}>
           <IconMenu />
         </div>
         <Select
@@ -39,6 +94,7 @@ const Header = ({ scrollY }: { scrollY: number }) => {
           </SelectItem>
         </Select>
       </div>
+      <MobileMenu toggleMenu={() => setIsOpen(!isOpen)} isOpen={isOpen} />
     </div>
   );
 };
