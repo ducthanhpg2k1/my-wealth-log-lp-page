@@ -36,13 +36,18 @@ const Header = ({ scrollY }: { scrollY: number }) => {
 
   const handleRedirectMenu = (id: string) => {
     setActiveMenu(id);
-
     const element = document.getElementById(id);
+
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      element.style.scrollMarginTop = '150px';
+
+      element.scrollIntoView({ behavior: 'smooth' });
+
+      setTimeout(() => {
+        element.style.scrollMarginTop = '0';
+      }, 1000);
     }
   };
-
   return (
     <div
       className={clsx('fixed top-0 w-full z-[1000]', {
