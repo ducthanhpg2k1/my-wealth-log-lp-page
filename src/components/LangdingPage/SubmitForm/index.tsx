@@ -1,5 +1,3 @@
-import { Button, Input } from '@nextui-org/react';
-
 import Text from '@components/UI/Text';
 
 const SubmitForm = () => {
@@ -30,7 +28,7 @@ const SubmitForm = () => {
         <Text type='font-16-400'>Về chúng tôi</Text>
         <Text type='font-16-400'>Tuyển dụng</Text>
       </div>
-      <div className='flex flex-col gap-4 mt-[-25px] md:mt-0'>
+      {/* <div className='flex flex-col gap-4 mt-[-25px] md:mt-0'>
         <Text type='font-16-500' className='uppercase'>
           Theo dõi
         </Text>
@@ -50,7 +48,7 @@ const SubmitForm = () => {
             Đăng ký
           </Text>
         </Button>
-      </div>
+      </div> */}
     </div>
   );
 };
