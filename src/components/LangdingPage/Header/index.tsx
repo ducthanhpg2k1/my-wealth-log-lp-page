@@ -95,7 +95,7 @@ const Header = ({ scrollY }: { scrollY: number }) => {
           }
         >
           <SelectItem variant='bordered' key={'vn'}>
-            Việt nam
+            Việt Nam
           </SelectItem>
         </Select>
       </div>
