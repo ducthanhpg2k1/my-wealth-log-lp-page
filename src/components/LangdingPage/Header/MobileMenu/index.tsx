@@ -76,7 +76,7 @@ const MobileMenu = ({ isOpen, toggleMenu }: { isOpen: boolean; toggleMenu: VoidF
             <div className='p-4 flex items-center gap-2'>
               <Image className='w-6 h-6' src={'/icons/ic-vn.svg'} width={24} height={24} alt='' />
               <Text type='font-16-500' className={clsx('text-[#4F4F4F]', {})}>
-                Tiếng việt
+                Tiếng Việt
               </Text>
             </div>
           </div>
