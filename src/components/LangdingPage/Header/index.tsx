@@ -1,7 +1,7 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable unicorn/consistent-function-scoping */
 /* eslint-disable unicorn/prefer-query-selector */
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { Select, SelectItem } from '@nextui-org/react';
 import clsx from 'clsx';
@@ -11,6 +11,7 @@ import { isMobile } from 'react-device-detect';
 import Text from '@components/UI/Text';
 
 import MobileMenu from './MobileMenu';
+import ModalSupport from './ModalSupport';
 
 export const DATAMENUS = [
   {
@@ -33,19 +34,24 @@ export const DATAMENUS = [
 const Header = ({ scrollY }: { scrollY: number }) => {
   const [activeMenu, setActiveMenu] = useState('#home');
   const [isOpen, setIsOpen] = useState(false);
+  const refModalSupport: any = useRef()
+
+
 
   const handleRedirectMenu = (id: string) => {
-    setActiveMenu(id);
     const element = document.getElementById(id);
 
-    if (element) {
+    if (element && id !== '#support') {
       element.style.scrollMarginTop = '150px';
+      setActiveMenu(id);
 
       element.scrollIntoView({ behavior: 'smooth' });
 
       setTimeout(() => {
         element.style.scrollMarginTop = '0';
       }, 1000);
+    } else {
+      refModalSupport.current.onOpen()
     }
   };
   return (
@@ -99,7 +105,9 @@ const Header = ({ scrollY }: { scrollY: number }) => {
           </SelectItem>
         </Select>
       </div>
-      <MobileMenu toggleMenu={() => setIsOpen(!isOpen)} isOpen={isOpen} />
+      <MobileMenu refModalSupport={refModalSupport} toggleMenu={() => setIsOpen(!isOpen)} isOpen={isOpen} />
+
+      <ModalSupport ref={refModalSupport} />
     </div>
   );
 };

@@ -1,7 +1,6 @@
 /* eslint-disable import/no-cycle */
 import { useEffect, useRef, useState } from 'react';
 
-import { Button } from '@nextui-org/react';
 import clsx from 'clsx';
 import { motion, useAnimation } from 'framer-motion';
 import Image from 'next/image';
@@ -13,6 +12,7 @@ import CardFooter from './CardFooter';
 import Evaluate from './Evaluate';
 import Features from './Features';
 import FooterLangdingPage from './FooterLangdingPage';
+import FormSubmitUser from './FormSubmitUser';
 import Header from './Header';
 import Information from './Information';
 import Introduce from './Introduce';
@@ -21,6 +21,9 @@ import SubmitForm from './SubmitForm';
 const LangdingPage = () => {
   const [scrollY, setScrollY] = useState(0);
   const divRef: any = useRef(null);
+
+
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,14 +45,14 @@ const LangdingPage = () => {
     };
   }, []);
 
-  const scrollToTop = () => {
-    if (divRef.current) {
-      divRef.current.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
-    }
-  };
+  // const scrollToTop = () => {
+  //   if (divRef.current) {
+  //     divRef.current.scrollTo({
+  //       top: 0,
+  //       behavior: 'smooth',
+  //     });
+  //   }
+  // };
 
   return (
     <div ref={divRef} className='w-screen h-screen overflow-x-hidden flex flex-col overflow-auto'>
@@ -144,28 +147,31 @@ const LangdingPage = () => {
       </AnimatedItem>
 
       <FooterLangdingPage />
-      {scrollY > 1000 && (
+      <div className='fixed bottom-3 right-6 md:bottom-3 md:right-6'>
+        <FormSubmitUser />
+      </div>
+      {/* {scrollY > 1000 && (
         <div className='fixed bottom-6 right-6 md:bottom-10 md:right-14'>
           <Button onClick={scrollToTop} isIconOnly radius='full' size='lg' className='bg-[#0E5543]'>
             <IconCaretUp />
           </Button>
         </div>
-      )}
+      )} */}
     </div>
   );
 };
 export default LangdingPage;
 
-const IconCaretUp = () => {
-  return (
-    <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'>
-      <path
-        d='M12 9.52489L4.65 16.8749C4.4 17.1249 4.10417 17.2457 3.7625 17.2374C3.42083 17.2291 3.125 17.0999 2.875 16.8499C2.625 16.5999 2.5 16.3041 2.5 15.9624C2.5 15.6207 2.625 15.3249 2.875 15.0749L10.575 7.39989C10.775 7.19989 11 7.04989 11.25 6.94989C11.5 6.84989 11.75 6.79989 12 6.79989C12.25 6.79989 12.5 6.84989 12.75 6.94989C13 7.04989 13.225 7.19989 13.425 7.39989L21.125 15.0999C21.375 15.3499 21.4958 15.6416 21.4875 15.9749C21.4792 16.3082 21.35 16.5999 21.1 16.8499C20.85 17.0999 20.5542 17.2249 20.2125 17.2249C19.8708 17.2249 19.575 17.0999 19.325 16.8499L12 9.52489Z'
-        fill='white'
-      />
-    </svg>
-  );
-};
+// const IconCaretUp = () => {
+//   return (
+//     <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'>
+//       <path
+//         d='M12 9.52489L4.65 16.8749C4.4 17.1249 4.10417 17.2457 3.7625 17.2374C3.42083 17.2291 3.125 17.0999 2.875 16.8499C2.625 16.5999 2.5 16.3041 2.5 15.9624C2.5 15.6207 2.625 15.3249 2.875 15.0749L10.575 7.39989C10.775 7.19989 11 7.04989 11.25 6.94989C11.5 6.84989 11.75 6.79989 12 6.79989C12.25 6.79989 12.5 6.84989 12.75 6.94989C13 7.04989 13.225 7.19989 13.425 7.39989L21.125 15.0999C21.375 15.3499 21.4958 15.6416 21.4875 15.9749C21.4792 16.3082 21.35 16.5999 21.1 16.8499C20.85 17.0999 20.5542 17.2249 20.2125 17.2249C19.8708 17.2249 19.575 17.0999 19.325 16.8499L12 9.52489Z'
+//         fill='white'
+//       />
+//     </svg>
+//   );
+// };
 
 export const AnimatedItem = (props: any) => {
   const { children, transition, className, type } = props;

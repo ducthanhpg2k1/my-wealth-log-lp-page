@@ -9,15 +9,18 @@ import Text from '@components/UI/Text';
 
 import { DATAMENUS } from '..';
 
-const MobileMenu = ({ isOpen, toggleMenu }: { isOpen: boolean; toggleMenu: VoidFunction }) => {
+const MobileMenu = ({ isOpen, toggleMenu, refModalSupport }: { isOpen: boolean; toggleMenu: VoidFunction, refModalSupport: any }) => {
   const [activeMenu, setActiveMenu] = useState('#home');
 
   const handleRedirectMenu = (id: string) => {
-    setActiveMenu(id);
-
     const element = document.getElementById(id);
-    if (element) {
+    if (element && id !== '#support') {
+      setActiveMenu(id);
+
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      toggleMenu();
+    } else {
+      refModalSupport.current.onOpen()
       toggleMenu();
     }
   };
