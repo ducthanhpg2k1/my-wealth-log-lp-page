@@ -36,6 +36,9 @@ const ModalSupport = (props: IModalSupport, ref?: any) => {
   });
   const onVisible = () => {
     setVisible(!visible);
+    setErrorForm(false);
+    setValueEmail('');
+    setValueInformation('');
   };
 
   const handleSend = () => {
