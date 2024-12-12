@@ -167,7 +167,7 @@ const LangdingPage = () => {
         </Popover>
       </div>
       {scrollY > 1000 && (
-        <div className='fixed bottom-6 right-6 md:bottom-20 md:right-8'>
+        <div className='fixed bottom-20 right-4 md:bottom-20 md:right-8'>
           <Button onClick={scrollToTop} isIconOnly radius='full' size='lg' className='bg-[#0E5543]'>
             <IconCaretUp />
           </Button>
