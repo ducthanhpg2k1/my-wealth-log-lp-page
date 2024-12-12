@@ -149,13 +149,15 @@ const LangdingPage = () => {
 
       <FooterLangdingPage />
       <div className='fixed bottom-4 right-0 px-4 md:px-0 md:bottom-3 md:right-8'>
-        <Popover
-          isOpen={openSubmitForm}
-          placement='top'
-          onOpenChange={(open) => setOpenSubmitForm(open)}
-        >
+        <Popover isOpen={openSubmitForm} placement='top'>
           <PopoverTrigger>
-            <Button isIconOnly size='lg' className='bg-green-3' radius='full'>
+            <Button
+              onClick={() => setOpenSubmitForm(!openSubmitForm)}
+              isIconOnly
+              size='lg'
+              className='bg-green-3'
+              radius='full'
+            >
               <Info size={32} weight='fill' color='#fff' />
             </Button>
           </PopoverTrigger>
