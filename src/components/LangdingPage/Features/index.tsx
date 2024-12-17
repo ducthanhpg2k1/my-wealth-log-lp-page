@@ -5,53 +5,7 @@ import Text from '@components/UI/Text';
 // eslint-disable-next-line import/no-cycle
 import { AnimatedItem } from '..';
 
-const DATA_FEATURES = [
-  {
-    id: 1,
-    title: 'Hỗ trợ AI',
-    imgUrl: '/icons/ic-features1.svg',
-    description:
-      'Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.',
-  },
-  {
-    id: 2,
-    title: 'Tiết kiệm cho tương lai',
-    imgUrl: '/icons/ic-features2.svg',
-    description:
-      'Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.',
-  },
-  {
-    id: 3,
-    title: 'Quản lý tài sản hiệu quả',
-    imgUrl: '/icons/ic-features3.svg',
-    description:
-      'Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.',
-  },
-  {
-    id: 4,
-    title: 'Kiểm soát tài chính',
-    imgUrl: '/icons/ic-features4.svg',
-    description:
-      'Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.',
-  },
-  {
-    id: 5,
-    title: 'Quét hoá đơn',
-    imgUrl: '/icons/ic-features5.svg',
-    description:
-      'Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.',
-  },
-  {
-    id: 6,
-    title: 'Thay đổi Theme tuỳ ý',
-    imgUrl: '/icons/ic-features6.svg',
-
-    description:
-      'Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.',
-  },
-];
-
-const Features = () => {
+const Features = ({ features }: any) => {
   return (
     <div
       id='#feature'
@@ -76,20 +30,24 @@ const Features = () => {
         }}
       >
         <div className='grid grid-cols-1 md:grid-cols-3 gap-x-[168px] gap-y-[56px] md:gap-y-[100px]'>
-          {DATA_FEATURES?.map((item) => {
+          {features?.map((item: any) => {
             return (
-              <div
-                key={item?.id}
-                className='flex flex-col gap-5 text-center items-center justify-center'
-              >
-                <Image src={item?.imgUrl} width={64} height={64} alt='' className='w-16 h-16' />
-                <div className='flex flex-col gap-4'>
-                  <Text type='font-20-500' className='text-green-3 font-setting'>
-                    {item?.title}
-                  </Text>
-                  <Text type='font-16-400'>{item?.description}</Text>
-                </div>
-              </div>
+              <>
+                {item?.required && (
+                  <div
+                    key={item?.id}
+                    className='flex flex-col gap-5 text-center items-center justify-center'
+                  >
+                    <Image src={item?.icon} width={64} height={64} alt='' className='w-16 h-16' />
+                    <div className='flex flex-col gap-4'>
+                      <Text type='font-20-500' className='text-green-3 font-setting'>
+                        {item?.title}
+                      </Text>
+                      <Text type='font-16-400'>{item?.description}</Text>
+                    </div>
+                  </div>
+                )}
+              </>
             );
           })}
         </div>

@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 import Text from '@components/UI/Text';
 
-const CardFooter = () => {
+const CardFooter = ({ handleOpenAppStore, handleOpenGooglePlay }: any) => {
   return (
     <div className='container mx-auto pb-[80px] px-5'>
       <div className='bg-card-footer h-max md:min-h-[383px] gap-8 grid grid-cols-1 md:grid-cols-2 rounded-3xl'>
@@ -19,6 +19,7 @@ const CardFooter = () => {
               src={'/img-appstore-black.png'}
               width={110}
               height={32}
+              onClick={handleOpenAppStore}
               alt=''
               className='md:w-auto w-full h-auto hover:opacity-85 cursor-pointer'
             />
@@ -26,6 +27,7 @@ const CardFooter = () => {
               src={'/img-googleplay-black.png'}
               width={110}
               height={32}
+              onClick={handleOpenGooglePlay}
               alt=''
               className='md:w-auto w-full h-auto cursor-pointer hover:opacity-85'
             />

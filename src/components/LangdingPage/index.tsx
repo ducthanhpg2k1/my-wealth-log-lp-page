@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/consistent-function-scoping */
 /* eslint-disable import/no-cycle */
 import { useEffect, useRef, useState } from 'react';
 
@@ -20,7 +21,7 @@ import Information from './Information';
 import Introduce from './Introduce';
 import SubmitForm from './SubmitForm';
 
-const LangdingPage = () => {
+const LangdingPage = ({ dataConfig }: any) => {
   const [scrollY, setScrollY] = useState(0);
   const divRef: any = useRef(null);
 
@@ -55,6 +56,15 @@ const LangdingPage = () => {
     }
   };
 
+  const handleOpenAppStore = () => {
+    const iosAppUrl = dataConfig?.banners?.[0]?.url_appstore;
+    window.open(iosAppUrl, '_blank');
+  };
+
+  const handleOpenGooglePlay = () => {
+    const androidAppUrl = dataConfig?.banners?.[0]?.url_google;
+    window.open(androidAppUrl, '_blank');
+  };
   return (
     <div ref={divRef} className='w-screen h-screen overflow-x-hidden flex flex-col overflow-auto'>
       <Header scrollY={scrollY} />
@@ -65,55 +75,58 @@ const LangdingPage = () => {
         )}
       >
         <div className='flex flex-col pt-48 px-5 md:px-0 md:pt-0 md:justify-center items-center h-full gap-7 md:w-6/12 m-auto'>
-          <div className='flex flex-col gap-4 text-center'>
-            <AnimatedItem
-              transition={{
-                duration: 0.3,
-                ease: 'linear',
-                delay: 0.4,
-              }}
-            >
-              <Text type='font-50-600' className='font-setting text-green-3'>
-                This is My Wealth Log Slogan slogan
-              </Text>
-            </AnimatedItem>
-            <AnimatedItem
-              transition={{
-                duration: 0.4,
-                ease: 'linear',
-                delay: 0.4,
-              }}
-            >
-              <Text type='font-16-400'>
-                Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam
-                tellus. Aliquam semper convallis. Lorem ipsum dolor sit amet consectetur.
-              </Text>
-            </AnimatedItem>
-          </div>
-          <AnimatedItem
-            transition={{
-              duration: 0.6,
-              ease: 'linear',
-              delay: 0.4,
-            }}
-          >
-            <div className='flex items-center gap-4'>
-              <Image
-                src={'/img-appstore.png'}
-                width={110}
-                height={32}
-                alt=''
-                className='w-auto h-auto hover:opacity-85 cursor-pointer'
-              />
-              <Image
-                src={'/img-googleplay.png'}
-                width={110}
-                height={32}
-                alt=''
-                className='w-auto h-auto cursor-pointer hover:opacity-85'
-              />
+          {dataConfig?.banners?.[0]?.required && (
+            <div className='flex flex-col gap-4 text-center'>
+              <AnimatedItem
+                transition={{
+                  duration: 0.3,
+                  ease: 'linear',
+                  delay: 0.4,
+                }}
+              >
+                <Text type='font-50-600' className='font-setting text-green-3'>
+                  {dataConfig?.banners?.[0]?.title}
+                </Text>
+              </AnimatedItem>
+              <AnimatedItem
+                transition={{
+                  duration: 0.4,
+                  ease: 'linear',
+                  delay: 0.4,
+                }}
+              >
+                <Text type='font-16-400'>{dataConfig?.banners?.[0]?.description}</Text>
+              </AnimatedItem>
             </div>
-          </AnimatedItem>
+          )}
+          {dataConfig?.banners?.[0]?.required && (
+            <AnimatedItem
+              transition={{
+                duration: 0.6,
+                ease: 'linear',
+                delay: 0.4,
+              }}
+            >
+              <div className='flex items-center gap-4'>
+                <Image
+                  src={'/img-appstore.png'}
+                  width={110}
+                  onClick={handleOpenAppStore}
+                  height={32}
+                  alt=''
+                  className='w-auto h-auto hover:opacity-85 cursor-pointer'
+                />
+                <Image
+                  src={'/img-googleplay.png'}
+                  onClick={handleOpenGooglePlay}
+                  width={110}
+                  height={32}
+                  alt=''
+                  className='w-auto h-auto cursor-pointer hover:opacity-85'
+                />
+              </div>
+            </AnimatedItem>
+          )}
         </div>
       </div>
       <AnimatedItem
@@ -123,11 +136,11 @@ const LangdingPage = () => {
           delay: 0.4,
         }}
       >
-        <Information />
+        <Information overviews={dataConfig?.overviews} />
       </AnimatedItem>
-      <Introduce />
-      <Features />
-      <Evaluate />
+      <Introduce functions={dataConfig?.functions} />
+      <Features features={dataConfig?.features} />
+      <Evaluate users={dataConfig?.users} />
       <AnimatedItem
         transition={{
           duration: 0.4,
@@ -135,7 +148,10 @@ const LangdingPage = () => {
           delay: 0.4,
         }}
       >
-        <CardFooter />
+        <CardFooter
+          handleOpenAppStore={handleOpenAppStore}
+          handleOpenGooglePlay={handleOpenGooglePlay}
+        />
       </AnimatedItem>
       <AnimatedItem
         transition={{

@@ -3,15 +3,14 @@ import React from 'react';
 
 import { Avatar } from '@nextui-org/react';
 import clsx from 'clsx';
-import Image from 'next/image';
 import { isMobile } from 'react-device-detect';
 import Masonry from 'react-masonry-css';
 
 import Text from '@components/UI/Text';
-import { getAvatar } from '@utils/common';
 
 import ReviewCardMobile from './ReviewCardMobile';
 import { AnimatedItem } from '..';
+import RateStar from '../RateStar';
 
 export const reviews = [
   {
@@ -69,7 +68,7 @@ export const reviews = [
   },
 ];
 
-const Evaluate = () => {
+const Evaluate = ({ users }: any) => {
   return (
     <div className='container mx-auto px-5 flex flex-col gap-[40px] md:gap-[160px] pb-[40px] md:pb-[80px]'>
       <div className='flex flex-col gap-3 md:gap-6 text-center items-center'>
@@ -97,7 +96,7 @@ const Evaluate = () => {
           </Text>
         </AnimatedItem>
       </div>
-      {!isMobile && <ReviewCard />}
+      {!isMobile && <ReviewCard users={users} />}
       {isMobile && (
         <AnimatedItem
           transition={{
@@ -106,7 +105,7 @@ const Evaluate = () => {
             delay: 0.4,
           }}
         >
-          <ReviewCardMobile />
+          <ReviewCardMobile users={users} />
         </AnimatedItem>
       )}
     </div>
@@ -120,7 +119,7 @@ const breakpointColumnsObj = {
   700: 1, // 1 cột khi màn hình nhỏ hơn 700px
 };
 
-const ReviewCard = () => {
+const ReviewCard = ({ users }: any) => {
   return (
     <div className='p-6 flex justify-center items-center'>
       <Masonry
@@ -128,43 +127,41 @@ const ReviewCard = () => {
         className='my-masonry-grid'
         columnClassName='my-masonry-grid_column'
       >
-        {reviews.map((review, index) => (
-          <AnimatedItem
-            key={index}
-            transition={{
-              duration: 0.3 + index * 0.1,
-              ease: 'linear',
-              delay: 0.3,
-            }}
-          >
-            <div
-              className={clsx(
-                'bg-white w-[389px] py-12 px-6 rounded-lg border-2 border-solid border-[#F6F6F6]',
-                {
-                  '!mt-[-100px]': index === 1,
-                },
-              )}
-            >
-              <div className='flex items-center mb-4 justify-center text-center'>
-                <Avatar src={getAvatar()} className='w-12 h-12 mr-4' />
-                <div className='flex flex-col gap-1 text-start'>
-                  <Text type='font-18-500'>{review.name}</Text>
-                  <div className='flex items-center'>
-                    <Image
-                      width={120}
-                      height={24}
-                      alt=''
-                      className='w-[120px] h-6'
-                      src={'/img-start.png'}
-                    />
+        {users?.map((review: any, index: any) => (
+          <>
+            {review?.required && (
+              <AnimatedItem
+                key={index}
+                transition={{
+                  duration: 0.3 + index * 0.1,
+                  ease: 'linear',
+                  delay: 0.3,
+                }}
+              >
+                <div
+                  className={clsx(
+                    'bg-white w-[389px] py-12 px-6 rounded-lg border-2 border-solid border-[#F6F6F6]',
+                    {
+                      '!mt-[-100px]': index === 1,
+                    },
+                  )}
+                >
+                  <div className='flex items-center mb-4 justify-center text-center'>
+                    <Avatar src={review?.avatar} className='w-12 h-12 mr-4' />
+                    <div className='flex flex-col gap-1 text-start'>
+                      <Text type='font-18-500'>{review.name}</Text>
+                      <div className='flex items-center'>
+                        <RateStar rate={review?.rate} />
+                      </div>
+                    </div>
                   </div>
+                  <Text type='font-16-400' className='text-center'>
+                    {review.content}
+                  </Text>
                 </div>
-              </div>
-              <Text type='font-16-400' className='text-center'>
-                {review.content}
-              </Text>
-            </div>
-          </AnimatedItem>
+              </AnimatedItem>
+            )}
+          </>
         ))}
       </Masonry>
     </div>
