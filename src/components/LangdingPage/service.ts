@@ -1,7 +1,7 @@
 import { useRequest } from 'ahooks';
 
 import { API_PATH } from '@api/constant';
-import { request } from '@api/request';
+import { privateRequest, request } from '@api/request';
 
 interface IOptionsRequest {
   onSuccess?: (r: any) => void;
@@ -18,4 +18,21 @@ export const useSubcribleUser = (options?: IOptionsRequest) => {
       ...options,
     },
   );
+};
+
+const serviceGetConfigLdPage = async () => {
+  return await privateRequest(request.get, API_PATH.SET_UP_LDPAGE);
+};
+
+export const useGetConfigLdPage = () => {
+  const { data, loading, run, refreshAsync } = useRequest(async () => {
+    return await serviceGetConfigLdPage();
+  });
+
+  return {
+    dataConfigLdPage: data,
+    run,
+    loading,
+    refreshAsync,
+  };
 };

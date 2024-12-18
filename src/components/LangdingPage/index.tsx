@@ -1,6 +1,6 @@
 /* eslint-disable unicorn/consistent-function-scoping */
 /* eslint-disable import/no-cycle */
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { Button, Popover, PopoverContent, PopoverTrigger } from '@nextui-org/react';
 import { Info } from '@phosphor-icons/react';
@@ -20,13 +20,19 @@ import FormSubmitUser from './FormSubmitUser';
 import Header from './Header';
 import Information from './Information';
 import Introduce from './Introduce';
+import { useGetConfigLdPage } from './service';
 import SubmitForm from './SubmitForm';
 
-const LangdingPage = ({ dataConfig }: any) => {
+const LangdingPage = () => {
   const [scrollY, setScrollY] = useState(0);
   const divRef: any = useRef(null);
+  const { dataConfigLdPage } = useGetConfigLdPage();
 
   const [openSubmitForm, setOpenSubmitForm] = useState(true);
+
+  const dataConfig = useMemo(() => {
+    return dataConfigLdPage?.data?.content;
+  }, [dataConfigLdPage]);
 
   useEffect(() => {
     const handleScroll = () => {
