@@ -129,38 +129,36 @@ const ReviewCard = ({ users }: any) => {
       >
         {users?.map((review: any, index: any) => (
           <>
-            {review?.required && (
-              <AnimatedItem
-                key={index}
-                transition={{
-                  duration: 0.3 + index * 0.1,
-                  ease: 'linear',
-                  delay: 0.3,
-                }}
+            <AnimatedItem
+              key={index}
+              transition={{
+                duration: 0.3 + index * 0.1,
+                ease: 'linear',
+                delay: 0.3,
+              }}
+            >
+              <div
+                className={clsx(
+                  'bg-white w-[389px] py-12 px-6 rounded-lg border-2 border-solid border-[#F6F6F6]',
+                  {
+                    '!mt-[-100px]': index === 1,
+                  },
+                )}
               >
-                <div
-                  className={clsx(
-                    'bg-white w-[389px] py-12 px-6 rounded-lg border-2 border-solid border-[#F6F6F6]',
-                    {
-                      '!mt-[-100px]': index === 1,
-                    },
-                  )}
-                >
-                  <div className='flex items-center mb-4 justify-center text-center'>
-                    <Avatar src={review?.avatar} className='w-12 h-12 mr-4' />
-                    <div className='flex flex-col gap-1 text-start'>
-                      <Text type='font-18-500'>{review.name}</Text>
-                      <div className='flex items-center'>
-                        <RateStar rate={review?.rate} />
-                      </div>
+                <div className='flex items-center mb-4 justify-center text-center'>
+                  <Avatar src={review?.avatar} className='w-12 h-12 mr-4' />
+                  <div className='flex flex-col gap-1 text-start'>
+                    <Text type='font-18-500'>{review.name}</Text>
+                    <div className='flex items-center'>
+                      <RateStar rate={review?.rate} />
                     </div>
                   </div>
-                  <Text type='font-16-400' className='text-center'>
-                    {review.content}
-                  </Text>
                 </div>
-              </AnimatedItem>
-            )}
+                <Text type='font-16-400' className='text-center'>
+                  {review.content}
+                </Text>
+              </div>
+            </AnimatedItem>
           </>
         ))}
       </Masonry>

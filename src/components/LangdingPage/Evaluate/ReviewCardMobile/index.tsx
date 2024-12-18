@@ -29,27 +29,25 @@ const ReviewCardMobile = ({ users }: any) => {
         {users?.map((review: any) => {
           return (
             <>
-              {review?.required && (
-                <div
-                  key={review?.id}
-                  className={clsx(
-                    'bg-white w-full py-8 px-4 rounded-lg border-2 border-solid border-[#F6F6F6]',
-                  )}
-                >
-                  <div className='flex items-center mb-4 justify-center text-center'>
-                    <Avatar src={review.avatar} className='w-12 h-12 mr-4' />
-                    <div className='flex flex-col gap-1 text-start'>
-                      <Text type='font-18-500'>{review.name}</Text>
-                      <div className='flex items-center'>
-                        <RateStar rate={review?.rate} />
-                      </div>
+              <div
+                key={review?.id}
+                className={clsx(
+                  'bg-white w-full py-8 px-4 rounded-lg border-2 border-solid border-[#F6F6F6]',
+                )}
+              >
+                <div className='flex items-center mb-4 justify-center text-center'>
+                  <Avatar src={review.avatar} className='w-12 h-12 mr-4' />
+                  <div className='flex flex-col gap-1 text-start'>
+                    <Text type='font-18-500'>{review.name}</Text>
+                    <div className='flex items-center'>
+                      <RateStar rate={review?.rate} />
                     </div>
                   </div>
-                  <Text type='font-16-400' className='text-center'>
-                    {review.content}
-                  </Text>
                 </div>
-              )}
+                <Text type='font-16-400' className='text-center'>
+                  {review.content}
+                </Text>
+              </div>
             </>
           );
         })}
