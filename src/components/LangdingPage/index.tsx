@@ -7,6 +7,7 @@ import { Info } from '@phosphor-icons/react';
 import clsx from 'clsx';
 import { motion, useAnimation } from 'framer-motion';
 import Image from 'next/image';
+import { isMobile } from 'react-device-detect';
 import { useInView } from 'react-intersection-observer';
 
 import Text from '@components/UI/Text';
@@ -65,14 +66,19 @@ const LangdingPage = ({ dataConfig }: any) => {
     const androidAppUrl = dataConfig?.banners?.[0]?.url_google;
     window.open(androidAppUrl, '_blank');
   };
+
+  const urlBanner = dataConfig?.banners?.[0]?.image;
+  const urlMobileBanner = dataConfig?.banners?.[0]?.image_mobile;
+
   return (
     <div ref={divRef} className='w-screen h-screen overflow-x-hidden flex flex-col overflow-auto'>
       <Header scrollY={scrollY} />
       <div
         id='#home'
         className={clsx(
-          'w-full mt-[-48px] md:mt-0 bg-[url("/bg-header-mobile.png")] md:bg-[url("/bg-header.png")] min-h-[640px] md:min-h-[738px] bg-center bg-no-repeat bg-[length:100%_100%]',
+          'w-full mt-[-48px] md:mt-0 min-h-[640px] md:min-h-[738px] bg-center bg-no-repeat bg-[length:100%_100%]',
         )}
+        style={{ backgroundImage: isMobile ? `url(${urlMobileBanner})` : `url(${urlBanner})` }}
       >
         <div className='flex flex-col pt-48 px-5 md:px-0 md:pt-0 md:justify-center items-center h-full gap-7 md:w-6/12 m-auto'>
           {dataConfig?.banners?.[0]?.required && (
