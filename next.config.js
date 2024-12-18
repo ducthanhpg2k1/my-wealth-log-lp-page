@@ -36,13 +36,12 @@ const nextConfig = {
     LOCAL_STORAGE_KEY: process.env.NEXT_PUBLIC_LOCAL_STORAGE_KEY,
   },
   images: {
-    domains: ['139.162.6.217'],
     minimumCacheTTL: 60,
     formats: ['image/webp'],
     remotePatterns: [
       {
         protocol: 'http',
-        hostname: '139.162.6.217',
+        hostname: '**',
       },
       {
         protocol: 'https',

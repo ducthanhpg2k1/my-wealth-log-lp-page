@@ -4,7 +4,6 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { Button, Popover, PopoverContent, PopoverTrigger } from '@nextui-org/react';
 import { Info } from '@phosphor-icons/react';
-import clsx from 'clsx';
 import { motion, useAnimation } from 'framer-motion';
 import Image from 'next/image';
 import { isMobile } from 'react-device-detect';
@@ -79,7 +78,70 @@ const LangdingPage = () => {
   return (
     <div ref={divRef} className='w-screen h-screen overflow-x-hidden flex flex-col overflow-auto'>
       <Header scrollY={scrollY} />
-      <div
+      <div id='#home' className='relative min-h-[640px] md:min-h-[738px] mt-[-48px] md:mt-0'>
+        <Image
+          src={isMobile ? urlMobileBanner : urlBanner}
+          alt=''
+          width={1920}
+          height={640}
+          className='w-full absolute h-full'
+        />
+        <div className='flex flex-col pt-48 px-5 md:px-0 md:pt-0 md:justify-center items-center h-full gap-7 md:w-6/12 m-auto'>
+          {dataConfig?.banners?.[0]?.required && (
+            <div className='flex flex-col gap-4 text-center'>
+              <AnimatedItem
+                transition={{
+                  duration: 0.3,
+                  ease: 'linear',
+                  delay: 0.4,
+                }}
+              >
+                <Text type='font-50-600' className='font-setting text-green-3'>
+                  {dataConfig?.banners?.[0]?.title}
+                </Text>
+              </AnimatedItem>
+              <AnimatedItem
+                transition={{
+                  duration: 0.4,
+                  ease: 'linear',
+                  delay: 0.4,
+                }}
+              >
+                <Text type='font-16-400'>{dataConfig?.banners?.[0]?.description}</Text>
+              </AnimatedItem>
+            </div>
+          )}
+          {dataConfig?.banners?.[0]?.required && (
+            <AnimatedItem
+              transition={{
+                duration: 0.6,
+                ease: 'linear',
+                delay: 0.4,
+              }}
+            >
+              <div className='flex items-center gap-4'>
+                <Image
+                  src={'/img-appstore.png'}
+                  width={110}
+                  onClick={handleOpenAppStore}
+                  height={32}
+                  alt=''
+                  className='w-auto h-auto hover:opacity-85 cursor-pointer'
+                />
+                <Image
+                  src={'/img-googleplay.png'}
+                  onClick={handleOpenGooglePlay}
+                  width={110}
+                  height={32}
+                  alt=''
+                  className='w-auto h-auto cursor-pointer hover:opacity-85'
+                />
+              </div>
+            </AnimatedItem>
+          )}
+        </div>
+      </div>
+      {/* <div
         id='#home'
         className={clsx(
           'w-full mt-[-48px] md:mt-0 min-h-[640px] md:min-h-[738px] bg-center bg-no-repeat bg-[length:100%_100%]',
@@ -140,7 +202,7 @@ const LangdingPage = () => {
             </AnimatedItem>
           )}
         </div>
-      </div>
+      </div> */}
       <AnimatedItem
         transition={{
           duration: 0.5,
