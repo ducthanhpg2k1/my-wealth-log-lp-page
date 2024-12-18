@@ -79,13 +79,16 @@ const LangdingPage = () => {
     <div ref={divRef} className='w-screen h-screen overflow-x-hidden flex flex-col overflow-auto'>
       <Header scrollY={scrollY} />
       <div id='#home' className='relative min-h-[640px] md:min-h-[738px] mt-[-48px] md:mt-0'>
-        <Image
-          src={isMobile ? urlMobileBanner : urlBanner}
-          alt=''
-          width={1920}
-          height={640}
-          className='w-full absolute h-full'
-        />
+        {(urlMobileBanner || urlBanner) && (
+          <Image
+            src={isMobile ? urlMobileBanner : urlBanner}
+            alt=''
+            width={1920}
+            height={640}
+            className='w-full absolute h-full'
+          />
+        )}
+
         <div className='flex flex-col pt-48 px-5 md:px-0 md:pt-0 md:justify-center items-center h-full gap-7 md:w-6/12 m-auto'>
           {dataConfig?.banners?.[0]?.required && (
             <div className='flex flex-col gap-4 text-center'>
