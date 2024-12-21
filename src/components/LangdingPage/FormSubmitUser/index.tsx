@@ -28,7 +28,7 @@ const FormSubmitUser = ({ onClose }: { onClose: VoidFunction }) => {
     }
   };
   return (
-    <div className='bg-[#131560] p-4 w-full md:w-[485px] h-[280px] md:h-[319px] rounded-xl shadow-2xl'>
+    <div className='bg-[#131560] p-3 md:p-4 w-full md:w-[485px] h-auto md:h-[319px] rounded-xl shadow-2xl'>
       <div className='flex justify-end items-end'>
         <Button onClick={onClose} size='sm' isIconOnly variant='light' radius='full'>
           <Image
@@ -61,11 +61,11 @@ const FormSubmitUser = ({ onClose }: { onClose: VoidFunction }) => {
               classNames={{
                 inputWrapper: errorForm
                   ? [
-                      'px-3 h-[44px] border-1 bg-white border-solid border-[#dc3545] transition-all data-[hover=true]:!border-[#2AA98B] data-[hover=true]:!bg-white group-data-[focus=true]:!border-[#2AA98B]',
-                    ]
+                    'px-3 h-[44px] border-1 bg-white border-solid border-[#dc3545] transition-all data-[hover=true]:!border-[#2AA98B] data-[hover=true]:!bg-white group-data-[focus=true]:!border-[#2AA98B]',
+                  ]
                   : [
-                      'px-3 h-[44px] border-1 bg-white border-solid border-[#D5D5D5] transition-all data-[hover=true]:!border-[#2AA98B] data-[hover=true]:!bg-white group-data-[focus=true]:!border-[#2AA98B]',
-                    ],
+                    'px-3 h-[44px] border-1 bg-white border-solid border-[#D5D5D5] transition-all data-[hover=true]:!border-[#2AA98B] data-[hover=true]:!bg-white group-data-[focus=true]:!border-[#2AA98B]',
+                  ],
                 input: ['text-[16px] placeholder:text-[#888] placeholder:text-[16px]'],
               }}
               placeholder='your_email@gmail.com'

@@ -75,6 +75,8 @@ const LangdingPage = () => {
   const urlBanner = dataConfig?.banners?.[0]?.image;
   const urlMobileBanner = dataConfig?.banners?.[0]?.image_mobile;
 
+
+
   return (
     <div ref={divRef} className='w-screen h-screen overflow-x-hidden flex flex-col overflow-auto'>
       <Header scrollY={scrollY} />
