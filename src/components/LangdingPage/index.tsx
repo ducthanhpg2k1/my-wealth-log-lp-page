@@ -226,6 +226,7 @@ const LangdingPage = () => {
         }}
       >
         <CardFooter
+          footer={dataConfig?.footer?.[0]}
           handleOpenAppStore={handleOpenAppStore}
           handleOpenGooglePlay={handleOpenGooglePlay}
         />
@@ -237,7 +238,7 @@ const LangdingPage = () => {
           delay: 0.3,
         }}
       >
-        <SubmitForm />
+        <SubmitForm footer={dataConfig?.footer?.[0]} />
       </AnimatedItem>
 
       <FooterLangdingPage />
