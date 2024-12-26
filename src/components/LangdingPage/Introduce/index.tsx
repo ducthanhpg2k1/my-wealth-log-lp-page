@@ -25,7 +25,7 @@ const Introduce = ({ functions }: any) => {
                   key={item?.id}
                   className='grid items-center grid-cols-1 md:grid-cols-2 gap-[48px] md:gap-[186px]'
                 >
-                  {index !== 1 && !isMobile && (
+                  {(index % 2 === 0) && !isMobile && (
                     <Image
                       src={item?.image}
                       alt=''
@@ -54,7 +54,7 @@ const Introduce = ({ functions }: any) => {
                     <Text type='font-16-400'>{item?.description}</Text>
                   </div>
 
-                  {index === 1 && !isMobile && (
+                  {(index % 2 !== 0) && !isMobile && (
                     <Image
                       src={item?.image}
                       alt=''

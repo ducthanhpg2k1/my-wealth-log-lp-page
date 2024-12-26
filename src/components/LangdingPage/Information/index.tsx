@@ -18,7 +18,7 @@ const Information = ({ overviews }: any) => {
                   alt=''
                   width={42}
                   height={57}
-                  className='w-[42px] h-[57px]'
+                  className='max-w-[42px] max-h-[57px] object-contain'
                 />
 
                 <div className='flex flex-col gap-3'>

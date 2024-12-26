@@ -38,7 +38,7 @@ const Features = ({ features }: any) => {
                     key={item?.id}
                     className='flex flex-col gap-5 text-center items-center justify-center'
                   >
-                    <Image src={item?.icon} width={64} height={64} alt='' className='w-16 h-16' />
+                    <Image src={item?.icon} width={64} height={64} alt='' className='max-w-16 max-h-16 object-contain' />
                     <div className='flex flex-col gap-4'>
                       <Text type='font-20-500' className='text-green-3 font-setting'>
                         {item?.title}
