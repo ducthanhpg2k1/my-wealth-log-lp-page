@@ -1,14 +1,13 @@
 /* eslint-disable import/no-cycle */
 import { useState } from 'react';
 
-import { Avatar, Progress } from '@nextui-org/react';
+import { Progress } from '@nextui-org/react';
 import clsx from 'clsx';
+import Image from 'next/image';
 import Slider from 'react-slick';
 
 import RateStar from '@components/LangdingPage/RateStar';
 import Text from '@components/UI/Text';
-
-import { reviews } from '..';
 
 const ReviewCardMobile = ({ users }: any) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -36,7 +35,13 @@ const ReviewCardMobile = ({ users }: any) => {
                 )}
               >
                 <div className='flex items-center mb-4 justify-center text-center'>
-                  <Avatar src={review.avatar} className='w-12 h-12 mr-4' />
+                  <Image
+                    alt=''
+                    width={48}
+                    height={48}
+                    src={review?.avatar}
+                    className='w-12 rounded-full h-12 mr-4'
+                  />
                   <div className='flex flex-col gap-1 text-start'>
                     <Text type='font-18-500'>{review.name}</Text>
                     <div className='flex items-center'>
@@ -60,7 +65,7 @@ const ReviewCardMobile = ({ users }: any) => {
           color='default'
           size='md'
           value={currentSlide + 1}
-          maxValue={reviews?.length}
+          maxValue={users?.length}
         />
       </div>
     </div>

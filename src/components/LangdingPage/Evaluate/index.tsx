@@ -1,8 +1,8 @@
 /* eslint-disable import/no-cycle */
 import React from 'react';
 
-import { Avatar } from '@nextui-org/react';
 import clsx from 'clsx';
+import Image from 'next/image';
 import { isMobile } from 'react-device-detect';
 import Masonry from 'react-masonry-css';
 
@@ -11,62 +11,6 @@ import Text from '@components/UI/Text';
 import ReviewCardMobile from './ReviewCardMobile';
 import { AnimatedItem } from '..';
 import RateStar from '../RateStar';
-
-export const reviews = [
-  {
-    id: 1,
-    name: 'Nguyen Nguyen',
-    avatar: 'https://via.placeholder.com/150',
-    rating: 5,
-    content:
-      'Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.. Lorem ipsum dolor sit amet consectetur',
-  },
-  {
-    id: 2,
-
-    name: 'Nguyen A',
-    avatar: 'https://via.placeholder.com/150',
-    rating: 4,
-    content:
-      'Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.  Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.',
-  },
-  {
-    id: 3,
-
-    name: 'Nguyen B',
-    avatar: 'https://via.placeholder.com/150',
-    rating: 3,
-    content:
-      'Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.',
-  },
-  {
-    id: 4,
-
-    name: 'Nguyen C',
-    avatar: 'https://via.placeholder.com/150',
-    rating: 5,
-    content:
-      'Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.',
-  },
-  {
-    id: 5,
-
-    name: 'Nguyen D',
-    avatar: 'https://via.placeholder.com/150',
-    rating: 4,
-    content:
-      'Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.',
-  },
-  {
-    id: 6,
-
-    name: 'Nguyen E',
-    avatar: 'https://via.placeholder.com/150',
-    rating: 5,
-    content:
-      'Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.. Lorem ipsum dolor sit amet consectetur. Semper nibh sit tincidunt posuere aliquam tellus. Aliquam semper convallis.',
-  },
-];
 
 const Evaluate = ({ users }: any) => {
   return (
@@ -146,7 +90,14 @@ const ReviewCard = ({ users }: any) => {
                 )}
               >
                 <div className='flex items-center mb-4 justify-center text-center'>
-                  <Avatar src={review?.avatar} className='w-12 h-12 mr-4' />
+                  {/* <Avatar src={review?.avatar} className='w-12 h-12 mr-4' /> */}
+                  <Image
+                    alt=''
+                    width={48}
+                    height={48}
+                    src={review?.avatar}
+                    className='w-12 rounded-full h-12 mr-4'
+                  />
                   <div className='flex flex-col gap-1 text-start'>
                     <Text type='font-18-500'>{review.name}</Text>
                     <div className='flex items-center'>
