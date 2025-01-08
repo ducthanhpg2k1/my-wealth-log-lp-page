@@ -39,7 +39,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         <meta name='theme-color' content='#476055' />
         <meta name='title' content='My Wealth Log' />
         <meta name='description' content='My Wealth Log' />
-        <link rel='shortcut icon' href='/static/favicon.ico' />
+        <link rel='shortcut icon' href='/logo-green.png' />
         <meta
           name='viewport'
           content='width=device-width,initial-scale=1,maximum-scale=2,shrink-to-fit=no'
